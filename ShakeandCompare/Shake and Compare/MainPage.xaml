@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="Shake_and_Compare.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Shake_and_Compare"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:cfo="using:CharmFlyoutLibrary"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="DarkGoldenrod">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Shake and Compare - Friendship Meter" Margin="20,0,0,40" Style="{StaticResource PageHeaderTextStyle}"/>
+        </Grid>
+        <cfo:CharmFlyout
+           x:Name="cfoAbout"
+           Heading="About"
+           HeadingBackgroundBrush="#FF4E0000"
+           Grid.RowSpan="2">
+            <StackPanel x:Name="cfoAboutPanel">
+                <TextBlock x:Name="cfoLine1" TextWrapping="Wrap" FontSize="16">Shake &amp; Compare - Frienship Meter.</TextBlock>
+                <TextBlock x:Name="cfoBlank1" />
+                <TextBlock x:Name="cfoLine2" TextWrapping="Wrap" FontSize="16">Compare the level of friendship by type your name and your friends name. You can also shake your device and it will add some random names.</TextBlock>
+
+            </StackPanel>
+        </cfo:CharmFlyout>
+        
+        <cfo:CharmFlyout
+           x:Name="cfoPolicy"
+           Heading="Privacy Policy"
+           HeadingBackgroundBrush="#FF4E0000"
+           Grid.RowSpan="2">
+            <StackPanel x:Name="cfoPolicyPanel">
+                <TextBlock x:Name="cfoPLine1" TextWrapping="Wrap" FontSize="16">Live Currency Converter Policy.</TextBlock>
+                <TextBlock x:Name="cfoPBlank1" />
+                <TextBlock x:Name="cfoPLine2" TextWrapping="Wrap" FontSize="16">This applications does require internet connection to work properly.</TextBlock>
+
+                <TextBlock x:Name="cfoPBlank2" />
+                <TextBlock x:Name="cfoPLine3" TextWrapping="Wrap" FontSize="16">This application does not take any personal information of user in any process and at any point of time.</TextBlock>
+                
+            </StackPanel>
+        </cfo:CharmFlyout>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" HorizontalAlignment="Center">
+            <Button x:Name="compare_but" Content="Compare" HorizontalAlignment="Left" Margin="244,297,0,0" VerticalAlignment="Top" Click="compare_but_Click" FontSize="29.333" Foreground="black" Background="Snow" BorderBrush="Black"/>
+            <TextBlock HorizontalAlignment="Left" Margin="71,36,0,0" TextWrapping="Wrap" Text="Enter full name or Shake" VerticalAlignment="Top" FontSize="29.333" Width="335" Foreground="white"/>
+            <TextBlock HorizontalAlignment="Left" Margin="218,147,0,0" TextWrapping="Wrap" Text="&amp;" VerticalAlignment="Top" FontSize="29.333" Foreground="white"/>
+            <TextBox x:Name="Name1_textBox" HorizontalAlignment="Left" Height="72" Margin="71,75,0,0" FontSize="32" Text="{Binding N1, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" BorderBrush="#BF000000"/>
+            <TextBox x:Name="Name2_textBox" HorizontalAlignment="Left" Height="72" Margin="71,186,0,0" FontSize="32" Text="{Binding N2, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" BorderBrush="#BF000000"/>
+
+        </Grid>
+        
+    </Grid>
+</Page>
