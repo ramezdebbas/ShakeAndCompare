@@ -1,0 +1,8 @@
+Shake & Compare - Frienship Meter:
+
+Compare the level of friendship by type your name and your friends name. You can also shake your device and it will add names automatically.
+
+Features:
+
+-You can use the app while snapping.
+-Shake the device to compare automatically.

@@ -134,6 +134,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ApplicationIcon.png" />
+    <Content Include="Assets\comp.jpg" />
+    <Content Include="Assets\comp.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\man_256.png" />
     <Content Include="Assets\shake.png" />

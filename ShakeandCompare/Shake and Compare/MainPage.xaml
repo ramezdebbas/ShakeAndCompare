@@ -49,14 +49,72 @@
                 
             </StackPanel>
         </cfo:CharmFlyout>
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" HorizontalAlignment="Center">
-            <Button x:Name="compare_but" Content="Compare" HorizontalAlignment="Left" Margin="244,297,0,0" VerticalAlignment="Top" Click="compare_but_Click" FontSize="29.333" Foreground="black" Background="Snow" BorderBrush="Black"/>
-            <TextBlock HorizontalAlignment="Left" Margin="71,36,0,0" TextWrapping="Wrap" Text="Enter full name or Shake" VerticalAlignment="Top" FontSize="29.333" Width="335" Foreground="white"/>
-            <TextBlock HorizontalAlignment="Left" Margin="218,147,0,0" TextWrapping="Wrap" Text="&amp;" VerticalAlignment="Top" FontSize="29.333" Foreground="white"/>
-            <TextBox x:Name="Name1_textBox" HorizontalAlignment="Left" Height="72" Margin="71,75,0,0" FontSize="32" Text="{Binding N1, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" BorderBrush="#BF000000"/>
-            <TextBox x:Name="Name2_textBox" HorizontalAlignment="Left" Height="72" Margin="71,186,0,0" FontSize="32" Text="{Binding N2, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="328" BorderBrush="#BF000000"/>
-
+        <Grid x:Name="ContentPanel" Grid.Row="1" >
+            <Grid x:Name="UnSnappedView">
+            <Button x:Name="compare_but" Content="Compare" HorizontalAlignment="Left" Margin="132,336,0,0" VerticalAlignment="Top" Click="compare_but_Click" FontSize="29.333" Foreground="black" Background="Snow" BorderBrush="Black"/>
+            <TextBlock HorizontalAlignment="Left" Margin="19,36,0,0" TextWrapping="Wrap" Text="Enter full name or Shake" VerticalAlignment="Top" FontSize="29.333" Width="268" Foreground="white" Height="80"/>
+            <TextBlock HorizontalAlignment="Left" Margin="152,211,0,0" TextWrapping="Wrap" Text="&amp;" VerticalAlignment="Top" FontSize="29.333" Foreground="white"/>
+            <TextBox x:Name="Name1_textBox" HorizontalAlignment="Left" Height="70" Margin="20,139,0,0" FontSize="32" Text="{Binding N1, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" BorderBrush="#BF000000"/>
+            <TextBox x:Name="Name2_textBox" HorizontalAlignment="Left" Height="70" Margin="20,247,0,0" FontSize="32" Text="{Binding N2, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" BorderBrush="#BF000000"/>
+</Grid>
+            <Grid x:Name="SnappedView">
+                <TextBlock x:Name="SnappMessage" Text="Shake &amp; Compare - Friendship Meter" Visibility="Collapsed"></TextBlock>
+                <Image HorizontalAlignment="Left" Height="353" Margin="570,109,0,0" VerticalAlignment="Top" Width="663" Source="Assets/comp.png"/>
+            </Grid>
         </Grid>
         
     </Grid>
+    <VisualStateManager.VisualStateGroups>
+
+        <!-- Visual states reflect the application's view state -->
+        <VisualStateGroup x:Name="ApplicationViewStates">
+            <VisualState x:Name="FullScreenLandscape">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UnSnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+            <VisualState x:Name="Filled">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UnSnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+
+            <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+            <VisualState x:Name="FullScreenPortrait">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+
+            <!-- The back button and title have different styles when snapped -->
+            <VisualState x:Name="Snapped">
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="UnSnappedView" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                        <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
 </Page>

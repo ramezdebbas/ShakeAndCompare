@@ -34,9 +34,9 @@ namespace Shake_and_Compare
             this.InitializeComponent();
             sn = new SearchNames { N1 = "", N2 = "" };
             ContentPanel.DataContext = sn;
-            _shakeDecetor = new ShakeDetector();
-            _shakeDecetor.ShakeEvent += _shakeDecetor_ShakeEvent;
-            _shakeDecetor.Start();
+            //_shakeDecetor = new ShakeDetector();
+            //_shakeDecetor.ShakeEvent += _shakeDecetor_ShakeEvent;
+            //_shakeDecetor.Start();
             SettingsPane.GetForCurrentView().CommandsRequested += MainPage_CommandsRequested;
         }
 

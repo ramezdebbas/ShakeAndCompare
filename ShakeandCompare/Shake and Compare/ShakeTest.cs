@@ -70,16 +70,9 @@ namespace Shake_and_Compare
             {
                 if (_accelerometer == null)
                 {
-                    try
-                    {
-                        _accelerometer = Accelerometer.GetDefault();
-                        _accelerometer.ReadingChanged += _accelerometer_ReadingChanged;
-                        _accelerometer.ReportInterval = 1;
-                    }
-                    catch (Exception)
-                    {
-                        
-                    }
+                    _accelerometer = Accelerometer.GetDefault(); 
+                    _accelerometer.ReadingChanged += _accelerometer_ReadingChanged;
+                    _accelerometer.ReportInterval = 1;
                 }
             }
         }
